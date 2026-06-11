@@ -6,10 +6,10 @@
 
 <title>Fascination</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Ballet&family=Explora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ballet&family=Explora&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -19,7 +19,7 @@
 }
 
 html,
-body{.
+body{
     width:100%;
     min-height:100%;
 }
@@ -45,22 +45,22 @@ body{
     );
 }
 
-.bg-image{
+.bg-video{
     position:absolute;
-    left:50%;
-    top:45%;
+    inset:0;
 
     width:100%;
-    height:auto;
+    height:100%;
 
-    transform:translate(-50%, -50%);
+    object-fit:cover;
 
-    opacity:0.35;
-    mix-blend-mode:screen;
+    opacity:0.5;
+    mix-blend-mode:normal;
 
     z-index:1;
-}
 
+    pointer-events:none;
+}
 .title-back{
     position:absolute;
     left:50%;
@@ -170,7 +170,7 @@ body{
         rgba(0,0,0,0.35) 55%,
         rgba(0,0,0,0.75) 100%
     );
-x
+
     z-index:2;
     pointer-events:none;
 }
@@ -196,10 +196,10 @@ x
 
 .right-photo{
     position:absolute;
-    right:0;
-    top:0vh;
+    right:0px;
+    top:-90px;
 
-    width:340px;
+    width:400px;
 
     object-fit:cover;
 
@@ -214,8 +214,8 @@ x
 .focus-box{
     position:absolute;
 
-    width:220px;
-    height:220px;
+    width:300px;
+    height:300px;
 
     overflow:hidden;
 
@@ -243,8 +243,8 @@ x
 /* 두 번째 박스는 살짝 작게 */
 
 .focus2{
-    width:180px;
-    height:180px;
+    width:230px;
+    height:230px;
     opacity:0;
     border-color:#1E44FF;
 }
@@ -253,36 +253,142 @@ x
 
 .scene-text{
     position:absolute;
-    left:402px;
-    top:160px;
+    left:412px;
+    top:226px;
 
     font-family:"Explora", serif;
-    font-size:52px;
+    font-size:75px;
     color:#FB00FF;
 
     z-index:10;
 }
 
 .scene-text.small{
-    left:970px;
-    top:288px;
-    font-size:52px;
+    left:905px;
+    top:480px;
+    font-size:75px;
 }
 
 .korean-text{
+    white-space:pre-line;
     position:absolute;
-    right:249px;
-    bottom:20px;
+    left:395px;
+    top:629px;
 
-    width:292.8px;
+    width:402px;
 
-    font-family:"Noto Sans KR", sans-serif;
-    font-size:9px;
+    font-family:"Nanum Myeongjo", serif;
+    font-size:16px;
     line-height:1.7;
 
     color:#FB00FF;
 
     z-index:10;
+}
+
+/* ================= SCENE 3 ================= */
+
+.scene3{
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+
+    background:black;
+}
+
+.panel{
+    position:relative;
+
+    width:25%;
+    height:100%;
+
+    overflow:hidden;
+
+    opacity:0;
+
+   transition:opacity 1.2s ease;
+}
+
+.panel.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.panel1{
+    background:#FB00FF;
+}
+
+.panel-korean{
+    position:absolute;
+
+    left:20px;
+    top:540px;
+
+    transform:none;
+
+    width:80%;
+
+    white-space:pre-line;
+
+    font-family:"Nanum Myeongjo", serif;
+    font-size:16px;
+    line-height:1.8;
+
+    color:#001DAD;
+
+    z-index:30;
+}
+
+.panel img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.panel2 img{
+    animation:float 7s ease-in-out infinite;
+}
+
+.panel3 img{
+   animation:float 7s ease-in-out infinite;
+}
+
+.panel4 img{animation:float 7s ease-in-out infinite;
+}
+
+.panel-question{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    font-family:"Explora", serif;
+    font-size:46px;
+
+    white-space:nowrap;
+
+    color:#FB00FF;
+
+    z-index:20;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
 }
 </style>
 </head>
@@ -291,8 +397,9 @@ x
 
 <section class="cover">
 
-    <img class="bg-image" src="wave.png" alt="background image">
-
+   <video class="bg-video" autoplay muted loop playsinline>
+    <source src="wave.mp4" type="video/mp4">
+</video>
     <h1 class="title-back">La Fascination</h1>
     <h1 class="title-front">La Fascination</h1>
 
@@ -306,23 +413,41 @@ x
     <img class="right-photo" src="right.jpg" alt="right image">
 
     <div class="focus-box focus1">
-        <img src="forest.jpg" alt="focused image">
-    </div>
+    <img src="forest.jpg" class="focus-img">
+</div>
 
-    <div class="focus-box focus2">
-        <img src="forest.jpg" alt="focused image">
-    </div>
+<div class="focus-box focus2">
+    <img src="forest.jpg" class="focus-img">
+</div>
 
     <p class="scene-text">you see.</p>
     <p class="scene-text small">you choose.</p>
 
-    <p class="korean-text">
-        당신의 앞에 매혹적인 무언가가 놓여 있다.<br>
-        당신은 무엇을 볼지, 무엇을 받아들일지,<br>
-        얼마나 오래 시선을 둘지 스스로 결정한다고 믿는다.<br>
-        당신은 보는 사람이 자신이라고 생각한다.<br>
-        아직 자신의 시선이 자신의 통제 아래 있다고 믿는다.
+    <p class="korean-text" id="typingText">
     </p>
+
+</section>
+
+<section class="scene3">
+
+    <div class="panel panel1">
+      <p class="panel-korean" id="scene3Typing"></p>
+    </div>
+
+    <div class="panel panel2">
+        <img src="noise1.jpg">
+       <p class="panel-question">Are you truly seeing?</p>
+    </div>
+
+    <div class="panel panel3">
+        <img src="noise2.jpg">
+        <p class="panel-question">Are you truly the one choosing?</p>
+    </div>
+
+    <div class="panel panel4">
+        <img src="noise3.jpg">
+        <p class="panel-question">Are you truly in control?</p>
+    </div>
 
 </section>
 
@@ -330,8 +455,12 @@ x
 const scene2 = document.querySelector(".scene2");
 const focus1 = document.querySelector(".focus1");
 const focus2 = document.querySelector(".focus2");
+
 const focusImg1 = document.querySelector(".focus1 img");
 const focusImg2 = document.querySelector(".focus2 img");
+
+const leftPhoto = document.querySelector(".left-photo");
+const rightPhoto = document.querySelector(".right-photo");
 
 scene2.addEventListener("mousemove", function(e){
 
@@ -339,9 +468,33 @@ scene2.addEventListener("mousemove", function(e){
 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+const hovered = document.elementFromPoint(
+    e.clientX,
+    e.clientY
+);
 
-    const size1 = 130;
-    const size2 = 105;
+if(hovered === leftPhoto){
+
+    focusImg1.src = "left.jpg";
+    focusImg2.src = "left.jpg";
+
+}
+
+else if(hovered === rightPhoto){
+
+    focusImg1.src = "right.jpg";
+    focusImg2.src = "right.jpg";
+
+}
+
+else{
+
+    focusImg1.src = "forest.jpg";
+    focusImg2.src = "forest.jpg";
+
+}
+    const size1 = 300;
+    const size2 = 300;
 
     focus1.style.opacity = 1;
     focus2.style.opacity = 1;
@@ -349,7 +502,7 @@ scene2.addEventListener("mousemove", function(e){
     focus1.style.left = (x - size1 / 2) + "px";
     focus1.style.top = (y - size1 / 2) + "px";
 
-    focus2.style.left = (x + 200) + "px";
+    focus2.style.left = (x + 250) + "px";
     focus2.style.top = (y - 250) + "px";
 
     focusImg1.style.left = -(x - size1 / 2) + "px";
@@ -363,6 +516,117 @@ scene2.addEventListener("mouseleave", function(){
     focus1.style.opacity = 0;
     focus2.style.opacity = 0;
 });
+
+const text = `당신의 앞에 매혹적인 무언가가 놓여 있습니다.
+당신은 무엇을 볼지, 얼마나 오래 시선을 둘지,
+스스로 결정한다고 믿고있습니다.
+
+당신은 보는 주체가 자신이라고 생각합니다.
+시선이 자신의 통제 아래 있다고 믿고있습니다.`;
+
+const typingTarget = document.getElementById("typingText");
+
+let charIndex = 0;
+let typingStarted = false;
+
+function typeWriter(){
+
+    if(charIndex < text.length){
+
+        typingTarget.textContent += text.charAt(charIndex);
+
+        charIndex++;
+
+        setTimeout(typeWriter, 45);
+    }
+}
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting && !typingStarted){
+
+            typingStarted = true;
+            typeWriter();
+
+        }
+
+    });
+
+},{
+    threshold:0.5
+});
+
+observer.observe(scene2);
+
+const scene3 = document.querySelector(".scene3");
+const scene3TypingTarget = document.getElementById("scene3Typing");
+
+const scene3Text = `이 시선이 처음부터 당신의 것이
+아니었다면 어떨까?
+
+당신이 알아차리기 훨씬 전부터 이미
+그 대상에게 이끌리고 있는거라면?
+
+정말 바라보고 있는 것은 당신인가?
+정말 선택하고 있는 것은 당신인가?
+정말 통제하고 있는 것은 당신인가?`;
+
+let scene3CharIndex = 0;
+let scene3TypingStarted = false;
+
+function typeScene3(){
+
+    if(scene3CharIndex < scene3Text.length){
+
+        scene3TypingTarget.textContent += scene3Text.charAt(scene3CharIndex);
+
+        scene3CharIndex++;
+
+        setTimeout(typeScene3, 45);
+    }
+}
+
+const panels = document.querySelectorAll(".panel");
+
+const scene3Observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+     if(entry.isIntersecting){
+
+    panels.forEach((panel,index)=>{
+
+        setTimeout(()=>{
+
+            panel.classList.add("show");
+
+        }, index * 500);
+
+    });
+
+   if(!scene3TypingStarted){
+
+    scene3TypingStarted = true;
+
+    setTimeout(()=>{
+
+        typeScene3();
+
+    }, 3000);
+
+}
+}
+
+    });
+
+},{
+    threshold:0.4
+});
+
+scene3Observer.observe(scene3);
+
 </script>
 
 </body>
